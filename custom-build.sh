@@ -1,4 +1,4 @@
-ANDROID_NDK_ROOT=/Users/air/Library/Android/sdk/ndk/26.0.10792818 ANDROID_SDK_ROOT=/Users/air/Library/Android/sdk ./android.sh --debug --no-ffmpeg-kit-protocols \
+ANDROID_NDK_ROOT="<YOUR ANDROID NDK ROOT DIR>" ANDROID_SDK_ROOT="<YOUR ANDROID SDK ROOT DIR>" ./android.sh --debug --no-ffmpeg-kit-protocols \
 --enable-libilbc --enable-android-zlib --enable-android-media-codec \
 --enable-custom-library-1-name=libbs2b \
 --enable-custom-library-1-repo=https://github.com/alexmarsev/libbs2b \
