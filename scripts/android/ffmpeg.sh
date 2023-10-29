@@ -379,7 +379,7 @@ if [[ -z ${NO_WORKSPACE_CLEANUP_ffmpeg} ]]; then
   rm -f "${BASEDIR}"/src/"${LIB_NAME}"/libavcodec/neon/*.o 1>>"${BASEDIR}"/build.log 2>&1
 
   # DELETE SHARED FRAMEWORK WORKAROUNDS
-  git checkout "${BASEDIR}/src/ffmpeg/ffbuild" 1>>"${BASEDIR}"/build.log 2>&1
+  #git checkout "${BASEDIR}/src/ffmpeg/ffbuild" 1>>"${BASEDIR}"/build.log 2>&1
 fi
 
 # UPDATE BUILD FLAGS
@@ -390,11 +390,11 @@ ulimit -n 2048 1>>"${BASEDIR}"/build.log 2>&1
 
 ########################### CUSTOMIZATIONS #######################
 cd "${BASEDIR}" 1>>"${BASEDIR}"/build.log 2>&1 || return 1
-git checkout android/ffmpeg-kit-android-lib/src/main/cpp/ffmpegkit.c 1>>"${BASEDIR}"/build.log 2>&1
+#git checkout android/ffmpeg-kit-android-lib/src/main/cpp/ffmpegkit.c 1>>"${BASEDIR}"/build.log 2>&1
 cd "${BASEDIR}"/src/"${LIB_NAME}" 1>>"${BASEDIR}"/build.log 2>&1 || return 1
-git checkout libavformat/file.c 1>>"${BASEDIR}"/build.log 2>&1
-git checkout libavformat/protocols.c 1>>"${BASEDIR}"/build.log 2>&1
-git checkout libavutil 1>>"${BASEDIR}"/build.log 2>&1
+#git checkout libavformat/file.c 1>>"${BASEDIR}"/build.log 2>&1
+#git checkout libavformat/protocols.c 1>>"${BASEDIR}"/build.log 2>&1
+#git checkout libavutil 1>>"${BASEDIR}"/build.log 2>&1
 
 # 1. Use thread local log levels
 ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR}"/src/"${LIB_NAME}"/libavutil/log.c 1>>"${BASEDIR}"/build.log 2>&1 || return 1
@@ -407,13 +407,14 @@ else
   cat ../../tools/protocols/libavformat_file.c >> libavformat/file.c
   cat ../../tools/protocols/libavutil_file.h >> libavutil/file.h
   cat ../../tools/protocols/libavutil_file.c >> libavutil/file.c
-  awk '{gsub(/ff_file_protocol;/,"ff_file_protocol;\nextern const URLProtocol ff_saf_protocol;")}1' libavformat/protocols.c > libavformat/protocols.c.tmp
+  #awk '{gsub(/ff_file_protocol;/,"ff_file_protocol;\nextern const URLProtocol ff_saf_protocol;")}1' libavformat/protocols.c > libavformat/protocols.c.tmp
   cat libavformat/protocols.c.tmp > libavformat/protocols.c
   echo -e "\nINFO: Enabled custom ffmpeg-kit protocols\n" 1>>"${BASEDIR}"/build.log 2>&1
 fi
 
 ###################################################################
 
+# Audio only version of FFmpeg!
 ./configure \
   --cross-prefix="${HOST}-" \
   --sysroot="${ANDROID_SYSROOT}" \
@@ -471,6 +472,170 @@ fi
   --disable-nvenc \
   --disable-vaapi \
   --disable-vdpau \
+	--disable-debug \
+	--disable-doc \
+	--disable-avdevice \
+	--disable-swscale \
+	--disable-postproc \
+	--disable-ffmpeg \
+	--disable-ffplay \
+	--disable-iconv \
+	--disable-zlib \
+	--disable-bzlib \
+	--disable-lzma \
+	--disable-sdl2 \
+	--disable-schannel \
+	--disable-securetransport \
+	--disable-xlib \
+	--disable-muxers \
+	--disable-demuxers \
+	--disable-hwaccels \
+	--disable-d3d11va \
+	--disable-nvenc \
+	--disable-dxva2 \
+	--disable-bsfs \
+	--disable-parsers \
+	--disable-indevs \
+	--disable-outdevs \
+	--disable-encoders \
+	--disable-decoders \
+  --disable-filters \
+	--disable-bsfs \
+	--enable-demuxer=image2 \
+	--enable-demuxer=aac \
+	--enable-demuxer=ac3 \
+	--enable-demuxer=aiff \
+	--enable-demuxer=ape \
+	--enable-demuxer=asf \
+	--enable-demuxer=au \
+	--enable-demuxer=avi \
+	--enable-demuxer=flac \
+	--enable-demuxer=flv \
+	--enable-demuxer=matroska \
+	--enable-demuxer=mov \
+	--enable-demuxer=m4v \
+	--enable-demuxer=mp3 \
+	--enable-demuxer=mpc* \
+	--enable-demuxer=ogg \
+	--enable-demuxer=pcm* \
+	--enable-demuxer=rm \
+	--enable-demuxer=shorten \
+	--enable-demuxer=tak \
+	--enable-demuxer=tta \
+	--enable-demuxer=wav \
+	--enable-demuxer=wv \
+	--enable-demuxer=xwma \
+	--enable-demuxer=dsf \
+	--enable-demuxer=dts \
+	--enable-demuxer=truehd \
+  --enable-decoder=aac \
+  --enable-decoder=aac_latm \
+	--enable-decoder=ac3 \
+	--enable-decoder=alac \
+	--enable-decoder=als \
+	--enable-decoder=ape \
+  --enable-decoder=atrac1 \
+  --enable-decoder=atrac3 \
+	--enable-decoder=eac3 \
+	--enable-decoder=flac \
+	--enable-decoder=gsm \
+  --enable-decoder=gsm_ms \
+  --enable-decoder=mp1 \
+  --enable-decoder=mp1float \
+  --enable-decoder=mp2 \
+  --enable-decoder=mp2float \
+  --enable-decoder=mp3 \
+  --enable-decoder=mp3float \
+  --enable-decoder=mp3adu \
+  --enable-decoder=mp3adufloat \
+  --enable-decoder=mp3on4 \
+  --enable-decoder=mp3on4float \
+  --enable-decoder=mpc7 \
+  --enable-decoder=mpc8 \
+	--enable-decoder=opus \
+  --enable-decoder=ra_144 \
+  --enable-decoder=ra_288 \
+	--enable-decoder=ralf \
+	--enable-decoder=shorten \
+	--enable-decoder=tak \
+	--enable-decoder=tta \
+	--enable-decoder=vorbis \
+	--enable-decoder=wavpack \
+	--enable-decoder=wma* \
+	--enable-decoder=pcm* \
+	--enable-decoder=dsd* \
+	--enable-decoder=truehd \
+	--enable-decoder=mjpeg \
+  --enable-parser=aac \
+  --enable-parser=aac_latm \
+  --enable-parser=ac3 \
+  --enable-parser=cook \
+  --enable-parser=dca \
+  --enable-parser=flac \
+  --enable-parser=gsm \
+  --enable-parser=mlp \
+  --enable-parser=mpegaudio \
+  --enable-parser=tak \
+  --enable-parser=vorbis \
+  --enable-parser=vp3 \
+  --enable-parser=vp8 \
+  --enable-filter=acompressor \
+  --enable-filter=acrossfade \
+  --enable-filter=acrossover \
+  --enable-filter=adeclick \
+  --enable-filter=adeclip \
+  --enable-filter=adelay \
+  --enable-filter=adenorm \
+  --enable-filter=adrc \
+  --enable-filter=adynamicequalizer \
+  --enable-filter=adynamicsmooth \
+  --enable-filter=aecho \
+  --enable-filter=afade \
+  --enable-filter=afftdn \
+  --enable-filter=afftfilt \
+  --enable-filter=afir \
+  --enable-filter=aformat \
+  --enable-filter=afreqshift \
+  --enable-filter=afwtdn \
+  --enable-filter=agate \
+  --enable-filter=aiir \
+  --enable-filter=alimiter \
+  --enable-filter=anequalizer \
+  --enable-filter=anlmdn \
+  --enable-filter=aphaser \
+  --enable-filter=aphaseshift \
+  --enable-filter=apulsator \
+  --enable-filter=aresample \
+  --enable-filter=aspectralstats \
+  --enable-filter=astats \
+  --enable-filter=asubboost \
+  --enable-filter=atempo \
+  --enable-filter=atilt \
+  --enable-filter=bs2b \
+  --enable-filter=channelmap \
+  --enable-filter=chorus \
+  --enable-filter=compand \
+  --enable-filter=crossfeed \
+  --enable-filter=deesser \
+  --enable-filter=dialoguenhance \
+  --enable-filter=dynaudnorm \
+  --enable-filter=equalizer \
+  --enable-filter=extrastereo \
+  --enable-filter=firequalizer \
+  --enable-filter=haas \
+  --enable-filter=headphone \
+  --enable-filter=loudnorm \
+  --enable-filter=pan \
+  --enable-filter=replaygain \
+  --enable-filter=resample \
+  --enable-filter=silencedetect \
+  --enable-filter=silenceremove \
+  --enable-filter=speechnorm \
+  --enable-filter=stereotools \
+  --enable-filter=stereowiden \
+  --enable-filter=superequalizer \
+  --enable-filter=vibrato \
+  --enable-filter=virtualbass \
   ${CONFIGURE_POSTFIX} 1>>"${BASEDIR}"/build.log 2>&1
 
 if [[ $? -ne 0 ]]; then
@@ -514,25 +679,6 @@ mkdir -p "${FFMPEG_LIBRARY_PATH}"/include/libavutil/arm 1>>"${BASEDIR}"/build.lo
 mkdir -p "${FFMPEG_LIBRARY_PATH}"/include/libavutil/aarch64 1>>"${BASEDIR}"/build.log 2>&1
 mkdir -p "${FFMPEG_LIBRARY_PATH}"/include/libavcodec/x86 1>>"${BASEDIR}"/build.log 2>&1
 mkdir -p "${FFMPEG_LIBRARY_PATH}"/include/libavcodec/arm 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/config.h "${FFMPEG_LIBRARY_PATH}"/include/config.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavcodec/mathops.h "${FFMPEG_LIBRARY_PATH}"/include/libavcodec/mathops.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavcodec/x86/mathops.h "${FFMPEG_LIBRARY_PATH}"/include/libavcodec/x86/mathops.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavcodec/arm/mathops.h "${FFMPEG_LIBRARY_PATH}"/include/libavcodec/arm/mathops.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavformat/network.h "${FFMPEG_LIBRARY_PATH}"/include/libavformat/network.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavformat/os_support.h "${FFMPEG_LIBRARY_PATH}"/include/libavformat/os_support.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavformat/url.h "${FFMPEG_LIBRARY_PATH}"/include/libavformat/url.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/bprint.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/bprint.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/getenv_utf8.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/getenv_utf8.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/internal.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/internal.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/libm.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/libm.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/reverse.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/reverse.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/thread.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/thread.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/timer.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/asm.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/x86/asm.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/x86/timer.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/arm/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/arm/timer.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/aarch64/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/aarch64/timer.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/emms.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/x86/emms.h 1>>"${BASEDIR}"/build.log 2>&1
 
 if [ $? -eq 0 ]; then
   echo "ok"
