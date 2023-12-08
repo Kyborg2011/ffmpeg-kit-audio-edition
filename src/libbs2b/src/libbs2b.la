@@ -17,7 +17,7 @@ old_library='libbs2b.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/Users/air/dev/ffmpeg-kit/prebuilt/android-x86_64/libsndfile/lib =/Users/air/dev/ffmpeg-kit/prebuilt/android-x86_64/libsndfile/lib/libsndfile.la -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/x86_64-linux-android/lib -L=/usr/lib/x86_64-linux-android/24 -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/lib -llog'
+dependency_libs=' -L/Users/air/dev/ffmpeg-kit/prebuilt/android-x86_64/libsndfile/lib /Users/air/dev/ffmpeg-kit/prebuilt/android-x86_64/libsndfile/lib/libsndfile.la -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/x86_64-linux-android/lib -L=/usr/lib/x86_64-linux-android/24 -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/lib -llog'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -28,7 +28,7 @@ age=0
 revision=0
 
 # Is this an already installed library?
-installed=yes
+installed=no
 
 # Should we warn about portability when linking against -modules?
 shouldnotlink=no

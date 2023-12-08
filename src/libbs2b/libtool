@@ -72,8 +72,8 @@ host_os=linux-android
 
 # The build system.
 build_alias=
-build=x86_64-apple-darwin22.5.0
-build_os=darwin22.5.0
+build=x86_64-apple-darwin23.1.0
+build_os=darwin23.1.0
 
 # A sed program that does not truncate output.
 SED="/usr/local/bin/gsed"
@@ -189,7 +189,7 @@ nm_interface="BSD nm"
 nm_file_list_spec="@"
 
 # The root where to search for dependent libraries,and where our libraries should be installed.
-lt_sysroot=/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot
+lt_sysroot=/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot
 
 # Command to truncate a binary pipe.
 lt_truncate_bin="/usr/local/opt/coreutils/libexec/gnubin/dd bs=4096 count=1"
@@ -282,7 +282,7 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.7 /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.7/lib/linux/x86_64 /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/x86_64-linux-android/24 /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/x86_64-linux-android /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib "
+sys_lib_search_path_spec="/Users/air/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/17 /Users/air/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/17/lib/linux/x86_64 /Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/x86_64-linux-android/24 /Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/x86_64-linux-android /Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib "
 
 # Detected run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/lib /usr/lib"
@@ -11791,17 +11791,17 @@ file_list_spec=""
 hardcode_action=immediate
 
 # The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.7/lib/linux/x86_64 /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24 /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android /Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib"
+compiler_lib_search_dirs="/Users/air/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/17/lib/linux/x86_64 /Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24 /Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android /Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib"
 
 # Dependencies to place before and after the objects being linked to
 # create a shared library.
-predep_objects="/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24/crtbegin_so.o"
-postdep_objects="/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24/crtend_so.o"
+predep_objects="/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24/crtbegin_so.o"
+postdep_objects="/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24/crtend_so.o"
 predeps=""
 postdeps="-lc++ -lm -l:libunwind.a -ldl -lc -l:libunwind.a -ldl"
 
 # The library search path used internally by the compiler when linking
 # a shared library.
-compiler_lib_search_path="-L/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.7/lib/linux/x86_64 -L/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24 -L/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android -L/Users/air/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib"
+compiler_lib_search_path="-L/Users/air/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/17/lib/linux/x86_64 -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android/24 -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib/x86_64-linux-android -L/Users/air/Library/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/../sysroot/usr/lib"
 
 # ### END LIBTOOL TAG CONFIG: CXX

@@ -213,7 +213,7 @@ get_android_arch() {
     echo "x86"
     ;;
   4)
-    echo "x86_64"
+    echo "x86-64"
     ;;
   esac
 }
