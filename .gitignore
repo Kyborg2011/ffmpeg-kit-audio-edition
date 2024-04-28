@@ -3,14 +3,6 @@
 /prebuilt/
 .DS_Store
 .idea
-<<<<<<< HEAD
 .gradle
 .DS_Store
 tools/android/.gradle
-
-
-=======
-tools/android/.gradle
-.gradle
-.DS_Store
->>>>>>> 5863acde0caffdca6d98805acef95028157cc7ee
