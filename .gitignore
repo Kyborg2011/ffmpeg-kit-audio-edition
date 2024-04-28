@@ -6,3 +6,4 @@
 .gradle
 .DS_Store
 tools/android/.gradle
+src/*
