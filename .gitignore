@@ -7,3 +7,5 @@
 .DS_Store
 tools/android/.gradle
 src/*
+!src/libsndfile
+!src/libbs2b
