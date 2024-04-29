@@ -1,6 +1,6 @@
 [submodule "src/libsndfile"]
 	path = src/libsndfile
-	url = https://github.com/libsndfile/libsndfile
+	url = https://github.com/arthenica/libsndfile
 
 [submodule "src/libbs2b"]
 	path = src/libbs2b
