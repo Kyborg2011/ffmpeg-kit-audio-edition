@@ -12,7 +12,9 @@ make distclean 2>/dev/null 1>/dev/null
 
 # REGENERATE BUILD FILES IF NECESSARY OR REQUESTED
 export HAVE_AUTORECONF="no"
-HAVE_AUTORECONF="no" ./autogen.sh || return 1
+./autogen.sh
+cp ltmain.sh ./build-aux/
+./autogen.sh
 
 ./configure \
   --prefix="${LIB_INSTALL_PREFIX}" \

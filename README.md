@@ -1,16 +1,19 @@
-# FFmpegKit fork — Audio only edition with bs2b audio filter + reduced size of binaries
+# FFmpegKit fork: audio only edition with all audio filters alongside `bs2b` + reduced size of binaries
 
-This repository is a fork of a [FFmpegKit](https://github.com/arthenica/ffmpeg-kit). The main idea of a fork is to create a fast and reproducible way to build a custom FFmpeg binaries with such options:
+This repository is a fork of a [FFmpegKit](https://github.com/arthenica/ffmpeg-kit). The main idea of a fork is to create a fast and reproducible way to build a custom FFmpeg binaries for Android with such options:
 
-- Audio ONLY codecs, muxers/demuxers, parsers and filters;
+- Audio only codecs, muxers/demuxers, parsers and filters;
 - Everything else (video related for ex.) - removed;
-- Enabled an audio effect/filter - "bs2b" (very useful for listening with headphones) - to do that we have added an LGPL licenced library libbs2b and successfully built that all together.
+- Enabled an audio effect/filter - "bs2b" (very useful for listening with headphones) - to do that we have added a library libbs2b and successfully built that all together.
 
-### To make your build the only steps you need to do:
+## How to build:
 
 ```bash
-# Firstly you need to change ANDROID_SDK_ROOT and ANDROID_NDK_ROOT vars in custom-build.sh file according to your settings. And then do:
-
-chmod +x ./custom-build.sh
+git clone https://github.com/Kyborg2011/ffmpeg-kit-audio-edition.git
+git submodule update --init --recursive
+# Change "/path/to/android/ndk/26.1.10909125" to your real full path:
+export ANDROID_NDK_ROOT="/path/to/android/ndk/26.1.10909125"
+# Change "/path/to/android/ndk/26.1.10909125" to your real full path:
+export ANDROID_SDK_ROOT="/path/to/android/sdk"
 ./custom-build.sh
 ```
