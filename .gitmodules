@@ -1,3 +1,3 @@
-[submodule "src/libsndfile"]
-	path = src/libsndfile
-	url = https://github.com/arthenica/libsndfile
+[submodule "src/libbs2b"]
+	path = src/libbs2b
+	url = https://github.com/Kyborg2011/libbs2b

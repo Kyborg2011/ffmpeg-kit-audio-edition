@@ -11,9 +11,6 @@ echo $SNDFILE_LIBS
 make distclean 2>/dev/null 1>/dev/null
 
 # REGENERATE BUILD FILES IF NECESSARY OR REQUESTED
-export HAVE_AUTORECONF="no"
-./autogen.sh
-cp ltmain.sh ./build-aux/
 ./autogen.sh
 
 ./configure \
@@ -26,11 +23,6 @@ cp ltmain.sh ./build-aux/
   --host="${HOST}" \
   CFLAGS="${SNDFILE_CFLAGS}" \
   LDFLAGS="${SNDFILE_LIBS}" || return 1
-
-sed -e '/AC_FUNC_MALLOC/ s/^#*/#/' ./configure.ac | tee ./configure.ac
-
-# WORKAROUND TO DISABLE BUILDING OF DOCBOOK - BUILD SCRIPTS DO NOT GENERATE A TARGET FOR IT
-${SED_INLINE} 's/dist_man_MANS = .*/dist_man_MANS =/g' "${BASEDIR}"/src/"${LIB_NAME}"/doc/Makefile || return 1
 
 make -j$(get_cpu_count) || return 1
 

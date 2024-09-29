@@ -32,9 +32,9 @@ get_library_source() {
     SOURCE_TYPE="TAG"
     ;;
   ffmpeg)
-    SOURCE_REPO_URL="https://github.com/FFmpeg/FFmpeg"
-    SOURCE_ID="n6.1"
-    SOURCE_TYPE="TAG"
+    SOURCE_REPO_URL="https://github.com/Kyborg2011/FFmpeg"
+    SOURCE_ID="d5c308fcc5576861e42aa0c8897e3a0271a86ff7"
+    SOURCE_TYPE="COMMIT"
     ;;
   fontconfig)
     SOURCE_REPO_URL="https://github.com/arthenica/fontconfig"
@@ -127,9 +127,9 @@ get_library_source() {
     SOURCE_TYPE="TAG"
     ;;
   libsndfile)
-    SOURCE_REPO_URL="https://github.com/arthenica/libsndfile"
-    SOURCE_ID="1.2.0"
-    SOURCE_TYPE="TAG"
+    SOURCE_REPO_URL="https://github.com/Kyborg2011/libsndfile"
+    SOURCE_ID="7ff53bb3a9df2c27b11597bc6b3e0e4b5a72486c"
+    SOURCE_TYPE="COMMIT"
     ;;
   libtheora)
     SOURCE_REPO_URL="https://github.com/arthenica/theora"
