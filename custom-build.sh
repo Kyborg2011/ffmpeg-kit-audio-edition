@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export ANDROID_SDK_ROOT="/home/$(whoami)/Android/Sdk"
+export ANDROID_NDK_ROOT="${ANDROID_SDK_ROOT}/ndk/29.0.14033849"
+
 ./android.sh --debug --no-ffmpeg-kit-protocols \
   --enable-libsndfile --enable-libilbc --enable-android-zlib --enable-android-media-codec \
   --enable-custom-library-1-name=libbs2b \

@@ -5,10 +5,7 @@ make distclean 2>/dev/null 1>/dev/null
 
 # REGENERATE BUILD FILES IF NECESSARY OR REQUESTED
 autoreconf -vif 1>>"${BASEDIR}"/build.log
-cp ltmain.sh ./build-aux/
-autoreconf -vif 1>>"${BASEDIR}"/build.log
 
-#./Scripts/android-configure.sh
 ./configure \
   --prefix="${LIB_INSTALL_PREFIX}" \
   --with-pic \
